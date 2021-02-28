@@ -42,7 +42,7 @@
 
                 <div class="mb-4">
                     <label for="password" class="sr-only">Password</label>
-                    <input type="text" name="password" id="password" placeholder="Your password" class="bg-gray-100 border-2 w-full p-4 rouded-lg @error('name') border-red-500 @enderror" value="{{ old('password') }}">
+                    <input type="password" name="password" id="password" placeholder="Your password" class="bg-gray-100 border-2 w-full p-4 rouded-lg @error('name') border-red-500 @enderror" value="{{ old('password') }}">
 
                     @error('password')
                     <div class="text-red-500 mt-2 text-sm">
@@ -53,7 +53,7 @@
 
                 <div class="mb-4">
                     <label for="password_confirmation" class="sr-only">Password Confirmation</label>
-                    <input type="text" name="password_confirmation" id="password_confirmation" placeholder="Your confirm password" class="bg-gray-100 border-2 w-full p-4 rouded-lg" value="">
+                    <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Your confirm password" class="bg-gray-100 border-2 w-full p-4 rouded-lg" value="">
                 </div>
 
                 <div>

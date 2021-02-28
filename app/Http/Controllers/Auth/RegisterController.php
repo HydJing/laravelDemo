@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
@@ -29,10 +31,11 @@ class RegisterController extends Controller
             'name' => $request->name,
             'username' => $request->username,
             'email' => $request->email,
-            'passwprd' => Hash::make($request->passwprd),
+            'password' => Hash::make($request->password),
         ]);
 
         // sign the user in
+        Auth::attempt($request->only('email', 'password'));
 
         // redirect
         return redirect()->route('dashboard');
