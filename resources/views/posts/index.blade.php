@@ -25,10 +25,12 @@
                 @foreach ($posts as $post)
                     <div class="mb-4">
                         <a href="" class="font-bold">{{ $post->user->name }}</a>
-                        <span class="text-gray-600 text-sm">{{ $post->created_at->diffforhumans }}</span>
+                        <span class="text-gray-600 text-sm">{{ $post->created_at->diffforhumans() }}</span>
                         <p class="mb-2">{{ $post->body }}</p>
                     </div>
                 @endforeach
+
+                {{ $posts->links() }}
             @else
                 <p>No post found</p>
             @endif

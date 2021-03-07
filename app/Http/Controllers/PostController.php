@@ -9,8 +9,8 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::get();
-        
+        $posts = Post::paginate(10);
+
         return view('posts.index', [
             'posts' => $posts
         ]);
@@ -22,7 +22,7 @@ class PostController extends Controller
             'body' => 'required'
         ]);
 
-        $request->user()->getPosts()->create($request->only('body'));
+        $request->user()->posts()->create($request->only('body'));
 
         return back();
     }

@@ -13,7 +13,7 @@ Route::get('/', function() {
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::post('/logou', [LogoutController::class, 'store'])->name('logout');
+Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
@@ -24,6 +24,4 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
 Route::post('/posts', [PostController::class, 'store']);
 
-Route::get('/posts', function () {
-    return view('posts.index');
-});
+
