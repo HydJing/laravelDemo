@@ -29,22 +29,36 @@
 
                         <p class="mb-2">{{ $post->body }}</p>
 
-                        <div class="flex items-conter">
-                            @if (!$post->likedBy(Auth::user()))
-                                
-                                <form action="{{ route('posts.likes', $post) }}" method="POST" class="mr-1">
-                                    @csrf
-                                    <button class="text-blue-500" type="submit">Like</button>
-                                </form>
-                                
-                            @else
-
-                                <form action="{{ route('posts.likes', $post) }}" method="POST" class="mr-1">
+                        @if ($post->ownedBy(Auth::user()))
+                            <div>
+                                <form action="{{ route('posts.destroy', $post) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="text-blue-500" type="submit">Unlike</button>
+                                    <button class="text-blue-500" type="submit">Delete</button>
                                 </form>
-                            @endif
+                            </div>
+                        @endif
+
+                        <div class="flex items-conter">
+                            @auth
+                                
+                                @if (!$post->likedBy(Auth::user()))
+                                    
+                                    <form action="{{ route('posts.likes', $post) }}" method="POST" class="mr-1">
+                                        @csrf
+                                        <button class="text-blue-500" type="submit">Like</button>
+                                    </form>
+                                    
+                                @else
+
+                                    <form action="{{ route('posts.likes', $post) }}" method="POST" class="mr-1">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="text-blue-500" type="submit">Unlike</button>
+                                    </form>
+                                @endif
+
+                            @endauth
 
                             <span>{{ $post->likes->count() }} {{ Str::plural('like', $post->likes->count()) }}</span>
 
