@@ -29,6 +29,9 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+        // parameter: policyFunctionName, postObject. (User seems automatically passed)
+        $this->authorize('delete', $post);
+
         $post->delete();
 
         return back();
