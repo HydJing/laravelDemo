@@ -29,7 +29,7 @@
 
                         <p class="mb-2">{{ $post->body }}</p>
 
-                        @if ($post->ownedBy(Auth::user()))
+                        @can('delete', $post)
                             <div>
                                 <form action="{{ route('posts.destroy', $post) }}" method="POST">
                                     @csrf
@@ -37,7 +37,7 @@
                                     <button class="text-blue-500" type="submit">Delete</button>
                                 </form>
                             </div>
-                        @endif
+                        @endcan 
 
                         <div class="flex items-conter">
                             @auth
