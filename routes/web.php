@@ -5,13 +5,15 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-
+use App\Http\Controllers\UserPostController;
 
 Route::get('/', function() {
     return view('home');
 })->name('home');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::get('/users/{user}/posts', [UserPostController::class, 'index'])->name('users.posts');
 
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
