@@ -27,7 +27,7 @@ class PostLikeController extends Controller
 
         $user = Auth::user();
 
-        Mail::to($user)->send(new Postliked($user, $post));
+        Mail::to($post->user)->send(new Postliked($user, $post));
 
         return back();
     }
